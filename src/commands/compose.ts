@@ -1,8 +1,8 @@
 import { Command, Flags } from "@oclif/core";
-import { CompositionInputDto } from "../../services/compose/composition-input.dto";
-import { TYPES } from "../../types";
-import { container } from "../../container";
-import { ICompositionService } from "../../services/compose/composition-service.interface";
+import { CompositionInputDto } from "../services/compose/composition-input.dto";
+import { TYPES } from "../types";
+import { container } from "../container";
+import { ICompositionService } from "../services/compose/composition-service.interface";
 
 export default class Compose extends Command {
 

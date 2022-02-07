@@ -13,7 +13,6 @@
     "files": [
         "/bin",
         "/dist",
-        "/src",
         "/npm-shrinkwrap.json",
         "/oclif.manifest.json"
     ],

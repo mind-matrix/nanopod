@@ -1,8 +1,8 @@
 import { Command, Flags } from "@oclif/core";
-import { TYPES } from "../../types";
-import { container } from "../../container";
-import { BuildInputDto } from "../../services/build/build-input.dto";
-import { IBuildService } from "../../services/build/build-service.interface";
+import { TYPES } from "../types";
+import { container } from "../container";
+import { BuildInputDto } from "../services/build/build-input.dto";
+import { IBuildService } from "../services/build/build-service.interface";
 
 export default class Build extends Command {
 

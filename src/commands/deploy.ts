@@ -1,10 +1,10 @@
 import { Command, Flags } from "@oclif/core"
-import Build from "../build"
-import Compose from "../compose"
-import Publish from "../publish"
-import UploadS3 from "../upload/s3"
+import Build from "./build"
+import Compose from "./compose"
+import Publish from "./publish"
+import UploadS3 from "./upload/s3"
 import * as dotenv from "dotenv"
-import Clean from "../clean"
+import Clean from "./clean"
 
 dotenv.config()
 
@@ -32,7 +32,7 @@ export default class Deploy extends Command {
         await Compose.run([ args.path, ...flags.exclude.map(e => ['-e', e]).flat() ])
         await Build.run([ args.path, '-o', flags.output??args.path ])
         await UploadS3.run([ args.path, '-b', flags.bucket, '-i', flags.accessKeyId, '-k', flags.secretAccessKey ])
-        // await Publish.run([ args.path, args.url, '-c', flags.config ])
+        await Publish.run([ args.path, args.url, '-c', flags.config ])
         await Clean.run([ args.path, ...(flags.excludePodFile?['-d']:[]) ])
     }
 }

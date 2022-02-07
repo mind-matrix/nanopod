@@ -5,10 +5,10 @@ import * as path from "path"
 import * as fs from "fs"
 import * as unzipper from "unzipper"
 import * as etl from "etl"
-import { container } from '../../container'
-import { IPodParser } from '../../shared/pod-parser/pod-parser.interface'
-import { TYPES } from '../../types'
-import { IPodRecord } from '../../shared/pod-parser/pod-record.interface'
+import { container } from '../container'
+import { IPodParser } from '../shared/pod-parser/pod-parser.interface'
+import { TYPES } from '../types'
+import { IPodRecord } from '../shared/pod-parser/pod-record.interface'
 import * as dotenv from "dotenv"
 
 dotenv.config()
