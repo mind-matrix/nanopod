@@ -39,7 +39,7 @@
         "@oclif/test": "^2",
         "@types/archiver": "^5.3.1",
         "@types/chai": "^4",
-        "@types/mocha": "^9.0.0",
+        "@types/mocha": "^9.1.0",
         "@types/node": "^16.11.22",
         "@types/unzipper": "^0.10.5",
         "chai": "^4",
