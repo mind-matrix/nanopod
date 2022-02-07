@@ -1,6 +1,6 @@
 {
     "name": "nanopod",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A Secure Micro-Frontend Architecture CLI",
     "author": "Sagnik Modak @mind-matrix",
     "bin": {
