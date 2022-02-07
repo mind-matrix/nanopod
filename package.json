@@ -1,0 +1,90 @@
+{
+    "name": "nanopod",
+    "version": "0.0.0",
+    "description": "A Secure Micro-Frontend Architecture CLI",
+    "author": "Sagnik Modak @mind-matrix",
+    "bin": {
+        "nanopod": "./bin/run"
+    },
+    "homepage": "https://github.com/mind-matrix/nanopod",
+    "license": "SEE LICENSE IN LICENSE",
+    "main": "dist/index.js",
+    "repository": "mind-matrix/nanopod",
+    "files": [
+        "/bin",
+        "/dist",
+        "/npm-shrinkwrap.json",
+        "/oclif.manifest.json"
+    ],
+    "dependencies": {
+        "@oclif/core": "^1",
+        "@oclif/plugin-autocomplete": "^1.2.0",
+        "@oclif/plugin-commands": "^2.1.0",
+        "@oclif/plugin-help": "^5.1.11",
+        "@oclif/plugin-not-found": "^2.3.1",
+        "@oclif/plugin-plugins": "^2.1.0",
+        "@oclif/plugin-update": "^2.2.0",
+        "@oclif/plugin-warn-if-update-available": "^2.0.4",
+        "@oclif/plugin-which": "^2.1.0",
+        "archiver": "^5.3.0",
+        "aws-sdk": "^2.1069.0",
+        "axios": "^0.25.0",
+        "dotenv": "^16.0.0",
+        "etl": "^0.7.0",
+        "inversify": "^6.0.1",
+        "unzipper": "^0.10.11"
+    },
+    "devDependencies": {
+        "@oclif/test": "^2",
+        "@types/archiver": "^5.3.1",
+        "@types/chai": "^4",
+        "@types/mocha": "^9.0.0",
+        "@types/node": "^16.11.22",
+        "@types/unzipper": "^0.10.5",
+        "chai": "^4",
+        "eslint": "^7.32.0",
+        "eslint-config-oclif": "^4",
+        "eslint-config-oclif-typescript": "^1.0.2",
+        "globby": "^11",
+        "mocha": "^9",
+        "oclif": "^2",
+        "reflect-metadata": "^0.1.13",
+        "shx": "^0.3.3",
+        "ts-node": "^10.2.1",
+        "tslib": "^2.3.1",
+        "typescript": "^4.4.3"
+    },
+    "oclif": {
+        "scope": "mindmatrix",
+        "bin": "nanopod",
+        "dirname": "nanopod",
+        "commands": "./dist/commands",
+        "plugins": [
+            "@oclif/plugin-help",
+            "@oclif/plugin-plugins"
+        ],
+        "topicSeparator": " ",
+        "topics": {
+            "hello": {
+                "description": "Say hello to the world and others"
+            }
+        }
+    },
+    "scripts": {
+        "build": "shx rm -rf dist && tsc -b",
+        "lint": "eslint . --ext .ts --config .eslintrc",
+        "postpack": "shx rm -f oclif.manifest.json",
+        "posttest": "yarn lint",
+        "prepack": "yarn build && oclif manifest && oclif readme",
+        "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+        "version": "oclif readme && git add README.md"
+    },
+    "engines": {
+        "node": ">=12.0.0"
+    },
+    "bugs": "https://github.com/mind-matrix/nanopod/issues",
+    "keywords": [
+        "oclif"
+    ],
+    "types": "dist/index.d.ts"
+}
