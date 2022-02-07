@@ -1,12 +1,12 @@
 import { Command, Flags } from "@oclif/core";
-import { TYPES } from "../types";
-import { container } from "../container";
-import { BuildInputDto } from "../services/build/build-input.dto";
-import { IBuildService } from "../services/build/build-service.interface";
+import { TYPES } from "../../types";
+import { container } from "../../container";
+import { BuildInputDto } from "../../services/build/build-input.dto";
+import { IBuildService } from "../../services/build/build-service.interface";
 
 export default class Build extends Command {
 
-    static description = 'Build a Pod Image'
+    static description = 'Build a Pod Archive.'
 
     static flags = {
         output: Flags.string({ char: 'o', description: 'Output path for Pod archive', required: false }),

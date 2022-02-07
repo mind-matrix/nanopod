@@ -1,16 +1,16 @@
 import { Command, Flags } from "@oclif/core"
-import Build from "./build"
-import Compose from "./compose"
-import Publish from "./publish"
-import UploadS3 from "./upload/s3"
+import Build from "../build"
+import Compose from "../compose"
+import Publish from "../publish"
+import UploadS3 from "../upload/s3"
 import * as dotenv from "dotenv"
-import Clean from "./clean"
+import Clean from "../clean"
 
 dotenv.config()
 
 export default class Deploy extends Command {
 
-    static description = 'End-to-end deployment of a Nanopod from a folder'
+    static description = 'End-to-end deployment of a Nanopod Pod Archive.'
 
     static flags = {
         output: Flags.string({ char: 'o', description: 'Output path for Pod archive', required: false }),

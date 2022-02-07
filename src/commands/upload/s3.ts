@@ -9,7 +9,7 @@ import * as unzipper from "unzipper"
 dotenv.config()
 
 export default class UploadS3 extends Command {
-  static description = 'Upload a Pod to an S3 Bucket'
+  static description = 'Upload a Pod to an S3 Bucket.'
 
   static flags = {
     bucket: Flags.string({ char: 'b', description: 'S3 Bucket Name', required: true }),
