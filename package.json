@@ -28,7 +28,7 @@
         "@oclif/plugin-which": "^2.1.0",
         "reflect-metadata": "^0.1.13",
         "archiver": "^5.3.0",
-        "aws-sdk": "^2.1069.0",
+        "aws-sdk": "^2.1146.0",
         "axios": "^0.25.0",
         "dotenv": "^16.0.0",
         "etl": "^0.7.0",
