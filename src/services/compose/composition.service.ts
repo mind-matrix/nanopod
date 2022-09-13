@@ -1,13 +1,19 @@
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import { glob } from "glob";
 import { CompositionInputDto } from "./composition-input.dto";
-import * as path from "path";
+import * as path from "path/posix";
 import * as fs from "fs";
 import * as crypto from "crypto";
 import { ICompositionService } from "./composition-service.interface";
+import { PodParser } from "../../shared/pod-parser/pod-parser.service";
+import { TYPES } from "../../types";
+import { IPodRecord } from "../../shared/pod-parser/pod-record.interface";
 
 @injectable()
 export class CompositionService implements ICompositionService {
+    
+    @inject(TYPES.PodParser) private podParser: PodParser
+
     computeHash(filepath: string): Promise<string> {
         return new Promise((resolve, reject) => {
             const fd = fs.createReadStream(filepath)
@@ -25,16 +31,16 @@ export class CompositionService implements ICompositionService {
     }
     
     async compose(dto: CompositionInputDto): Promise<void> {
-        const allFiles = glob.sync(path.join(dto.path, "**/*"))
+        const allFiles = glob.sync(path.join(dto.path, "**/*")).filter(file => !fs.lstatSync(file).isDirectory())
         const excludedFilesFromConfig = dto.config.exclude.map(pattern => glob.sync(path.join(dto.path, pattern))).flat()
         const defaultExcludedFiles = [".pod","*.pod"].map(pattern => glob.sync(path.join(dto.path, pattern))).flat()
         const excludedFiles = Array.from(new Set([ ...excludedFilesFromConfig, ...defaultExcludedFiles]))
         const includedFiles = allFiles.filter(item => !excludedFiles.includes(item))
-        const fd = fs.createWriteStream(path.join(dto.path, ".pod"), { encoding: "utf8" })
+        const records: IPodRecord[] = []
         for (const file of includedFiles) {
             const fileHash = await this.computeHash(file)
-            fd.write(`${file} => ${fileHash}\n`)
+            records.push({ hash: fileHash, path: file } as IPodRecord)
         }
-        fd.close()
+        fs.writeFileSync(path.join(dto.path, ".pod"), await this.podParser.unparse(records), { encoding: "utf8" })
     }
 }

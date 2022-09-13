@@ -3,7 +3,7 @@
 ![nanopod](assets/logo.png)
 
 
-A Secure Micro-Frontend Architecture
+A simple, secure and performant Micro-Frontend Architecture
 
 # Overview
 

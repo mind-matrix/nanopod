@@ -3,7 +3,7 @@ import { PublishInputDto } from "./publish-input.dto";
 import { IPublishService } from "./publish-service.interface";
 import * as fs from "fs";
 import { glob } from "glob";
-import * as path from "path";
+import * as path from "path/posix";
 import * as unzipper from "unzipper";
 import * as etl from "etl";
 import { TYPES } from "../../types";

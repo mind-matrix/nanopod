@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 import { CleanInputDto } from "./clean-input.dto";
 import { ICleanService } from "./clean-service.interface";
 import { glob } from "glob";
-import * as path from "path";
+import * as path from "path/posix";
 import * as fs from "fs";
 
 @injectable()

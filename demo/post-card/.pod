@@ -1,3 +1,4 @@
+demo/post-card/assets/torry.png => 736941fbb079a3d8d06d92c90045c0441c6ddd0f
+demo/post-card/card.html => c0a387f7b51a56010912cf8f0594f87973c4d031
 demo/post-card/post-card.css => fc135bf9222a9dfc63f0f4028935c703534a3da5
-demo/post-card/post-card.html => 0816f185ef5b5ef27cee264a970321d3a8879d9f
-demo/post-card/post-card.js => e8c3e5e3978b373143e3c3127b17b5ede5d8b06e
+demo/post-card/post-card.js => edc5ab1279c6a6dddc36313ec51da0dff0890714

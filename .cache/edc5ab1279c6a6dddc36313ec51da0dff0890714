@@ -1,0 +1,11 @@
+const textElement = document.querySelector('p');
+const originalText = textElement.textContent;
+const textLength = originalText.length;
+let displayedLength = 1;
+fetch('resources/736941fbb079a3d8d06d92c90045c0441c6ddd0f.png').then(() => {
+    console.log('url fetching working');
+});
+setInterval(() => {
+    textElement.textContent = originalText.slice(0, displayedLength);
+    displayedLength = (displayedLength + 1) % (textLength + 1) + 1;
+}, 500);

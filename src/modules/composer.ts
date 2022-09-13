@@ -9,7 +9,7 @@ export class Composer {
 
     @inject(TYPES.CompositionService) private compositionService: ICompositionService
     
-    async compose(path: string, config: IComposeConfig = { exclude: [] }) {
-        await this.compositionService.compose(new CompositionInputDto(path, config))
+    async compose(name: string | undefined, path: string, config: IComposeConfig = { exclude: [] }) {
+        await this.compositionService.compose(new CompositionInputDto(name, path, config))
     }
 }
