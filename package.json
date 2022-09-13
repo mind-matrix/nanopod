@@ -57,7 +57,7 @@
         "@types/fastify-static": "^2.2.1",
         "@types/less": "^3.0.3",
         "@types/mime": "^3.0.1",
-        "@types/mocha": "^9.0.0",
+        "@types/mocha": "^9.1.1",
         "@types/node": "^16.11.22",
         "@types/temp": "^0.9.1",
         "@types/uniqid": "^5.3.2",
