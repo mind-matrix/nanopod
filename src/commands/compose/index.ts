@@ -17,8 +17,8 @@ export default class Compose extends Command {
 
     async run(): Promise<void> {
         const { args, flags } = await this.parse(Compose)
-        const path: string = args.path
-        const exclude: string[] = flags.exclude
+        const path: string = args.path.replace(/\\/g, '/')
+        const exclude: string[] = flags.exclude.map(path => path.replace(/\\/g, '/'))
         const name: string | undefined = flags.name
         const dto = new CompositionInputDto(name, path, { exclude })
         const compositionService = container.get<ICompositionService>(TYPES.CompositionService)

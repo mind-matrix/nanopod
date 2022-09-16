@@ -16,8 +16,8 @@ export default class Build extends Command {
 
     async run(): Promise<void> {
         const { args, flags } = await this.parse(Build)
-        const path: string = args.path
-        const outputPath: string | undefined = flags.output
+        const path: string = args.path.replace(/\\/g, '/')
+        const outputPath: string | undefined = flags.output?.replace(/\\/g, '/')
         const dto = new BuildInputDto(path, outputPath)
         const buildService = container.get<IBuildService>(TYPES.BuildService)
         await buildService.build(dto)

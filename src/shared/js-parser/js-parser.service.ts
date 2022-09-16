@@ -11,7 +11,7 @@ export class JsParser implements IJsParser {
     async parse(data: string, scopeId: string, records: IPodRecord[]): Promise<string> {
         const ast = parseScript(data)
         walk(ast, (node) => {
-            if (node.type == "Literal" && typeof(node.value) == "string") {
+            if (node && node.type == "Literal" && node.value && typeof(node.value) == "string") {
                 const extension = extname(node.value.trim())
                 const url = node.value.trim().replace(/^.?\//g, "")
                 const record = records.find(r => r.path == url)

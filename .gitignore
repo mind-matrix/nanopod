@@ -15,3 +15,5 @@ node_modules
 node_modules
 oclif.manifest.json
 .env
+/.cache
+**/*.pod

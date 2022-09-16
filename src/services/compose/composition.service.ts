@@ -39,7 +39,12 @@ export class CompositionService implements ICompositionService {
         const records: IPodRecord[] = []
         for (const file of includedFiles) {
             const fileHash = await this.computeHash(file)
-            records.push({ hash: fileHash, path: file } as IPodRecord)
+            const basename = path.basename(file)
+            const filePath = path.relative(dto.path, file)
+            records.push({ hash: fileHash, path: filePath } as IPodRecord)
+            if (["index.html","index.htm"].includes(basename)) {
+                records.push({ hash: fileHash, path: path.dirname(filePath) })
+            }
         }
         fs.writeFileSync(path.join(dto.path, ".pod"), await this.podParser.unparse(records), { encoding: "utf8" })
     }

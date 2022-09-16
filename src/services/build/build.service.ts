@@ -49,24 +49,25 @@ export class BuildService implements IBuildService {
             })
             archive.pipe(output)
             archive.append(await this.podParser.unparse(records), { name: ".pod" })
-            const relativeRecords = records.map(record => ({ path: relative(inputPath, record.path), hash: record.hash }))
-            for (const record of records) {
+            
+            const relativeRecords = records.map(record => ({ ...record, path: join(inputPath, record.path) }))
+            for (const record of relativeRecords.filter(record => fs.lstatSync(record.path).isFile())) {
                 const sourceFileExtension = extname(record.path)
                 if ([".html",".htm"].includes(sourceFileExtension)) {
                     const source = fs.readFileSync(record.path, "utf-8")
-                    const compiled = await this.htmlParser.parse(source, scopeId, relativeRecords)
+                    const compiled = await this.htmlParser.parse(source, scopeId, records)
                     const tmpfile = join(tmpdir, record.hash)
                     fs.writeFileSync(tmpfile, compiled)
                     archive.append(fs.createReadStream(tmpfile), { name: record.hash })
                 } else if ([".css"].includes(sourceFileExtension)) {
                     const source = fs.readFileSync(record.path, "utf-8")
-                    const compiled = await this.cssParser.parse(source, scopeId, relativeRecords)
+                    const compiled = await this.cssParser.parse(source, scopeId, records)
                     const tmpfile = join(tmpdir, record.hash)
                     fs.writeFileSync(tmpfile, compiled)
                     archive.append(fs.createReadStream(tmpfile), { name: record.hash })
                 } else if ([".js"].includes(sourceFileExtension)) {
                     const source = fs.readFileSync(record.path, "utf-8")
-                    const compiled = await this.jsParser.parse(source, scopeId, relativeRecords)
+                    const compiled = await this.jsParser.parse(source, scopeId, records)
                     const tmpfile = join(tmpdir, record.hash)
                     fs.writeFileSync(tmpfile, compiled)
                     archive.append(fs.createReadStream(tmpfile), { name: record.hash })
