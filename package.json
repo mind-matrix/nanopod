@@ -30,7 +30,7 @@
         "aws-sdk": "^2.1069.0",
         "axios": "^0.25.0",
         "css-tree": "^2.2.1",
-        "dotenv": "^16.0.0",
+        "dotenv": "^16.0.3",
         "enquirer": "^2.3.6",
         "esprima": "^4.0.1",
         "esprima-walk": "^0.1.0",
